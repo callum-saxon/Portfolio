@@ -37,8 +37,31 @@ I'm a full-stack software developer with a passion for creating intuitive and im
         </div>
       </section>
       <div class="vl"></div>
-        <h2>Work</h2>
-        <p>Showcase your work and projects.</p>
+      <h2 class="work-title">Work.</h2>
+      <div class="vl"></div>
+      <div class="work-section">
+        <div class="work-images">
+          <div class="work-item">
+            <img src="@/assets/rollsroyce-logo.png" alt="RollsRoyce Logo">
+            <p><strong>Rolls-Royce</strong></p>
+            <p>| Software Developer |</p>
+            <p>Gained experience with NLP and AI, developing a desktop application to efficiently extract and analyse texts.</p>
+          </div>
+          <div class="work-item">
+            <img src="@/assets/biocortex-logo-bl.png" alt="BioCortex Logo">
+            <p><strong>BioCortex</strong></p>
+            <p>| Full-Stack Developer |</p>
+            <p>Developed an essential Python data pipeline and full-stack web application, enhancing data processing and visualisation for scientific research.</p>
+          </div>
+          <div class="work-item">
+            <img src="@/assets/pathwayhousingsolutions.png" alt="PathwayHousingSolutions Logo">
+            <p><strong>Pathway Housing Solutions</strong></p>
+            <p>| Full-Stack Developer |</p>
+            <p>Developed an innovative application to boost interest in Nottingham's tourist locations, driving increased visitor engagement and footfall.</p>
+          </div>
+        </div>
+      </div>
+      <div class="v2"></div>
       <section id="contact" class="card">
         <h2>Contact</h2>
         <p>Provide contact information or a form for visitors to get in touch with you.</p>
@@ -54,11 +77,13 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Gruppo&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Reddit+Mono:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Gruppo&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Reddit+Mono:wght@200..900&display=swap');
 
 .main-content {
   align-items: center;
   width: 100vw;
+  background-color: #121212;
+  color: #fff;
 }
 
 .intro-container {
@@ -229,7 +254,13 @@ export default {
 
 .vl {
   border-left: 1px solid white;
-  height: 250px;
+  height: 350px;
+  padding-bottom: 10px;
+}
+
+.v2 {
+  border-left: 1px solid white;
+  height: 100px;
   padding-bottom: 10px;
 }
 
@@ -269,5 +300,46 @@ export default {
     opacity: 0;
     top: 60px;
   }
+}
+
+.work-section {
+  padding: 25px;
+  width: 100%;
+  text-align: center;
+}
+
+.work-title {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+.work-images {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.work-item {
+  width: 250px;
+  text-align: center;
+}
+
+.work-item img {
+  max-width: 250px;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-item img:hover {
+  transform: scale(1.05);
+}
+
+.work-item p {
+  margin: 0;
+  padding: 2vh 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #f0f0f0cc;
 }
 </style>
