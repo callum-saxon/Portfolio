@@ -1,17 +1,19 @@
 <template>
   <header class="header">
-    <div class="header-left">
-      <h1>CS</h1>
-    </div>
-    <nav class="header-center">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#life">Life</a></li>
-        <li><a href="#work">Work</a></li>
-      </ul>
-    </nav>
-    <div class="header-right">
-      <a href="#contact">Get in Touch ➥</a>
+    <div class="header-container">
+      <div class="header-left">
+        <h1>CS</h1>
+      </div>
+      <nav class="header-center">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#life">Life</a></li>
+          <li><a href="#work">Work</a></li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <a href="#contact">Get in Touch ➥</a>
+      </div>
     </div>
   </header>
 </template>
@@ -25,16 +27,17 @@ export default {
 <style scoped>
 .header {
   width: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+
+.header-container {
+  max-width: 100%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-sizing: border-box;
 }
 
 .header-left {
@@ -69,7 +72,6 @@ export default {
 .header-center a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .header-center a:hover {
@@ -85,7 +87,6 @@ export default {
 .header-right a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
   font-size: 1.2em;
   text-align: left;
 }
