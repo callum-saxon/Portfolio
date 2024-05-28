@@ -2,19 +2,17 @@
   <div id="app">
     <AppHeader />
     <main class="main-content">
-      <MainContent msg="I'm Callum Saxon a " />
+      <router-view></router-view>
     </main>
   </div>
 </template>
 
 <script>
-import MainContent from './components/MainContent.vue';
 import AppHeader from './components/AppHeader.vue';
 
 export default {
   name: 'App',
   components: {
-    MainContent,
     AppHeader,
   },
 };

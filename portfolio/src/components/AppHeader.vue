@@ -12,7 +12,7 @@
         </ul>
       </nav>
       <div class="header-right">
-        <a href="#contact">Get in Touch ➥</a>
+        <a href="#contact">Get in Touch 🡥</a>
       </div>
     </div>
   </header>

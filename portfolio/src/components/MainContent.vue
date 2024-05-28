@@ -19,17 +19,17 @@
       <p>SPECIALISING IN<br>MOBILE APP AND WEB DEVELOPMENT</p>
       <p>[SCROLL . . .]</p>
     </div>
-    <div class="mouse"></div>
     <div class="card-container">
+      <div class="vl"></div>
       <section id="about" class="card about-card">
         <div class="about-content">
           <div class="about-text">
             <h2>About</h2>
             <p>Hey there!
 
-I'm a full-stack software developer with a passion for creating intuitive and impactful digital solutions. Through freelancing, I've honed my skills in transforming complex designs into user-friendly experiences. I'm excited to collaborate on projects that challenge and inspire me.
+              I'm a full-stack software developer with a passion for creating intuitive and impactful digital solutions. Through freelancing, I've honed my skills in transforming complex designs into user-friendly experiences. I'm excited to collaborate on projects that challenge and inspire me.
 
-<br><br>Let's connect and bring your ideas to life with code! Check out some of my work here!</p>
+              <br><br>Let's connect and bring your ideas to life with code! Check out some of my work here!</p>
           </div>
           <div class="about-image">
             <img src="@/assets/working.png" alt="Working Image">
@@ -37,28 +37,46 @@ I'm a full-stack software developer with a passion for creating intuitive and im
         </div>
       </section>
       <div class="vl"></div>
-      <h2 class="work-title">Work.</h2>
+      <h2 class="projects-title">Projects.</h2>
       <div class="vl"></div>
-      <div class="work-section">
-        <div class="work-images">
-          <div class="work-item">
-            <img src="@/assets/rollsroyce-logo.png" alt="RollsRoyce Logo">
-            <p><strong>Rolls-Royce</strong></p>
-            <p>| Software Developer |</p>
-            <p>Gained experience with NLP and AI, developing a desktop application to efficiently extract and analyse texts.</p>
+      <div class="projects-section">
+        <div class="projects-list" @mousemove="handleMouseMove">
+          <p class="projects-subtitle">Featured Projects.</p>
+          <hr class="project-divider">
+          <div class="project-item" @click="navigateToProject('pathway-housing')" @mouseover="showTooltip(image1, 'pathway-housing')" @mouseleave="hideTooltip">
+            <p class="project-title">Pathway Housing Solutions - Nottingham's Blue Plaque Exploration</p>
+            <p class="project-category">WEB APPLICATION AND DIGITAL DESIGN</p>
           </div>
-          <div class="work-item">
-            <img src="@/assets/biocortex-logo-bl.png" alt="BioCortex Logo">
-            <p><strong>BioCortex</strong></p>
-            <p>| Full-Stack Developer |</p>
-            <p>Developed an essential Python data pipeline and full-stack web application, enhancing data processing and visualisation for scientific research.</p>
+          <hr class="project-divider">
+          <div class="project-item" @click="navigateToProject('biocortex')" @mouseover="showTooltip(image2, 'biocortex')" @mouseleave="hideTooltip">
+            <p class="project-title">BioCortex - Carbon Mirror</p>
+            <p class="project-category">WEB APPLICATION AND DIGITAL DESIGN</p>
           </div>
-          <div class="work-item">
-            <img src="@/assets/pathwayhousingsolutions.png" alt="PathwayHousingSolutions Logo">
-            <p><strong>Pathway Housing Solutions</strong></p>
-            <p>| Full-Stack Developer |</p>
-            <p>Developed an innovative application to boost interest in Nottingham's tourist locations, driving increased visitor engagement and footfall.</p>
+          <hr class="project-divider">
+          <div class="project-item" @click="navigateToProject('rolls-royce')" @mouseover="showTooltip(image3, 'rolls-royce')" @mouseleave="hideTooltip">
+            <p class="project-title">Rolls Royce - NLP and AI</p>
+            <p class="project-category">DESKTOP APPLICATION</p>
           </div>
+          <hr class="project-divider">
+        </div>
+        <div class="contact-section">
+          <p><strong>Want to see more?</strong> Get in touch at <a href="saxoncallum@gmail.com">saxoncallum@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="v2"></div>
+      <h2 class="lang-title">Lang.</h2>
+      <div class="vl"></div>
+      <div class="lang-section">
+        <h2 class="lang-subtitle">Languages I'm Familiar With.</h2>
+        <div class="lang-list">
+          <p>Python</p>
+          <p>JavaScript</p>
+          <p>Java</p>
+          <p>C++</p>
+          <p>SQL</p>
+          <p>React</p>
+          <p>React Native</p>
+          <p>Vue.js</p>
         </div>
       </div>
       <div class="v2"></div>
@@ -67,12 +85,49 @@ I'm a full-stack software developer with a passion for creating intuitive and im
         <p>Provide contact information or a form for visitors to get in touch with you.</p>
       </section>
     </div>
+    <div v-if="tooltipVisible" :style="{ top: tooltipY + 'px', left: tooltipX + 'px' }" class="tooltip-box">
+      <img :src="tooltipImage" alt="Project Image" class="tooltip-image">
+      <div class="tooltip-circle">🡥</div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'MainContent',
+  data() {
+    return {
+      tooltipVisible: false,
+      tooltipX: 0,
+      tooltipY: 0,
+      tooltipImage: '',
+      currentProjectId: '',
+      image1: require('@/assets/noise.png'),
+      image2: require('@/assets/working.png'),
+      image3: require('@/assets/sparkles.png'),
+    };
+  },
+  methods: {
+    handleMouseMove(event) {
+      const tooltipWidth = 440;
+      const tooltipHeight = 350;
+      this.tooltipX = event.clientX - tooltipWidth / 2;
+      this.tooltipY = event.clientY - tooltipHeight / 2;
+    },
+    showTooltip(image, projectId) {
+      this.tooltipImage = image;
+      this.currentProjectId = projectId;
+      this.tooltipVisible = true;
+    },
+    hideTooltip() {
+      this.tooltipVisible = false;
+    },
+    navigateToProject(id) {
+      if (id) {
+        this.$router.push({ name: 'ProjectView', params: { id } });
+      }
+    }
+  }
 };
 </script>
 
@@ -136,7 +191,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  padding: 75px 0;
+  padding-bottom: 50px;
   font-size: 1em;
   text-align: left;
   gap: 27%;
@@ -163,7 +218,7 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 25px;
-  width: 100vw;
+  width: 80vw;
   box-sizing: border-box;
 }
 
@@ -264,82 +319,133 @@ export default {
   padding-bottom: 10px;
 }
 
-.mouse {
-  width: 40px;
-  height: 70px;
-  border: 3px solid #333;
-  border-radius: 60px;
-  position: relative;
-  bottom: 40px;
+.projects-section {
+  width: 100%;
+  text-align: center;
 }
 
-.mouse::before {
-  content: '';
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  border-radius: 50%;
-  opacity: 1;
-  animation: wheel 2s infinite;
-  -webkit-animation: wheel 2s infinite;
+.projects-title {
+  font-size: 4em;
+  margin-bottom: 20px;
 }
 
-@keyframes wheel {
-  to {
-    opacity: 0;
-    top: 60px;
-  }
+.projects-subtitle {
+  font-size: 1.5em;
+  text-align: left;
 }
 
-@-webkit-keyframes wheel {
-  to {
-    opacity: 0;
-    top: 60px;
-  }
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+  padding-left: 10%;
 }
 
-.work-section {
+.project-title {
+  flex: 2;
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.project-category {
+  font-size: 0.5em;
+  text-align: right;
+}
+
+.project-divider {
+  border: 1px solid #444;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.lang-section {
   padding: 25px;
   width: 100%;
   text-align: center;
 }
 
-.work-title {
+.lang-title {
   font-size: 4em;
   margin-bottom: 20px;
 }
 
-.work-images {
+.lang-subtitle {
+  font-size: 3em;
+  margin-bottom: 20px;
+  padding-bottom: 75px;
+}
+
+.lang-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 15px;
 }
 
-.work-item {
-  width: 250px;
-  text-align: center;
-}
-
-.work-item img {
-  max-width: 250px;
-  height: auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.work-item img:hover {
-  transform: scale(1.05);
-}
-
-.work-item p {
-  margin: 0;
-  padding: 2vh 0;
-  font-size: 1.2em;
-  line-height: 1.6;
+.lang-list p {
+  font-size: 1.5em;
+  margin: 5px;
   color: #f0f0f0cc;
+}
+
+.contact-section {
+  padding-top: 20px;
+  font-size: 1.2em;
+}
+
+.contact-section a {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px dotted #fff;
+  transition: color 0.3s;
+}
+
+.contact-section a:hover {
+  color: #aaaaaa;
+}
+
+.tooltip-box {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 1000;
+  width: 400px;
+  height: 300px;
+  pointer-events: none;
+  transition: transform 0.1s ease;
+}
+
+.tooltip-image {
+  width: 350px;
+  height: 225px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  pointer-events: none;
+}
+
+.tooltip-circle {
+  width: 100px;
+  height: 100px;
+  background-color: #121212;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3em;
+  position: fixed;
+  pointer-events: none;
 }
 </style>
