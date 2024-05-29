@@ -23,21 +23,22 @@
       <div class="vl"></div>
       <section id="about" class="card about-card">
         <div class="about-content">
-          <div class="about-text">
-            <h2>About</h2>
-            <p>Hey there!
-
-              I'm a full-stack software developer with a passion for creating intuitive and impactful digital solutions. Through freelancing, I've honed my skills in transforming complex designs into user-friendly experiences. I'm excited to collaborate on projects that challenge and inspire me.
-
-              <br><br>Let's connect and bring your ideas to life with code! Check out some of my work here!</p>
-          </div>
-          <div class="about-image">
-            <img src="@/assets/working.png" alt="Working Image">
+          <h1 class="headline">Bringing Your Digital Visions to Life.</h1>
+          <div class="about-subcontent">
+            <div class="about-image">
+              <img src="@/assets/working.png" alt="Working Image">
+            </div>
+            <div class="about-text">
+              <p>
+                I'm a full-stack software developer with a passion for creating intuitive and impactful digital solutions. Through freelancing, I've honed my skills in transforming complex designs into user-friendly experiences. I'm excited to collaborate on projects that challenge and inspire me.
+                <br><br>Let's connect and bring your ideas to life with code! Check out some of my work here!
+              </p>
+            </div>
           </div>
         </div>
       </section>
       <div class="vl"></div>
-      <h2 class="projects-title">Projects.</h2>
+      <h2 class="projects-title">Projects.&sup3;	</h2>
       <div class="vl"></div>
       <div class="projects-section">
         <div class="projects-list" @mousemove="handleMouseMove">
@@ -58,28 +59,48 @@
             <p class="project-category">DESKTOP APPLICATION</p>
           </div>
           <hr class="project-divider">
-        </div>
-        <div class="contact-section">
-          <p><strong>Want to see more?</strong> Get in touch at <a href="saxoncallum@gmail.com">saxoncallum@gmail.com</a></p>
+          <div class="contact-section">
+            <p><strong>Want to see more?</strong> Get in touch at <a href="saxoncallum@gmail.com">saxoncallum@gmail.com</a></p>
+          </div>
         </div>
       </div>
-      <div class="v2"></div>
-      <h2 class="lang-title">Lang.</h2>
       <div class="vl"></div>
-      <div class="lang-section">
-        <h2 class="lang-subtitle">Languages I'm Familiar With.</h2>
-        <div class="lang-list">
-          <p>Python</p>
-          <p>JavaScript</p>
-          <p>Java</p>
-          <p>C++</p>
-          <p>SQL</p>
-          <p>React</p>
-          <p>React Native</p>
-          <p>Vue.js</p>
+      <h2 class="projects-title">Process.</h2>
+      <div class="vl"></div>
+      <div class="process-section">
+        <p class="process-title">The Process.</p>
+        <div class="process-steps">
+          <div class="step" :class="{ active: activeStep === 1, inactive: activeStep !== 1 }" @click="setActiveStep(1)">
+            <div class="step-number" :class="{ 'step-number-active': activeStep === 1 }">01//</div>
+            <div class="step-content">
+              <h3>Brainstorming</h3>
+              <p v-if="activeStep === 1">I'm here to bring your vision to life by diving deep into the essence of your brand! In the Brainstorming phase, I'll explore every angle to understand your unique goals and market landscape. Together, we'll generate innovative ideas that will set the foundation for an extraordinary project. Let's unleash creativity and discover the best path forward!</p>
+            </div>
+          </div>
+          <div class="step" :class="{ active: activeStep === 2, inactive: activeStep !== 2 }" @click="setActiveStep(2)">
+            <div class="step-number" :class="{ 'step-number-active': activeStep === 2 }">02//</div>
+            <div class="step-content">
+              <h3>Designing</h3>
+              <p v-if="activeStep === 2">In the Designing phase, I'll transform our brainstorming insights into stunning visual concepts. My goal is to create a design that captures your brand's essence and speaks directly to your audience. From wireframes to polished prototypes, I'll ensure every detail aligns with your vision and stands out in the digital landscape. Let's craft a design that leaves a lasting impression!</p>
+            </div>
+          </div>
+          <div class="step" :class="{ active: activeStep === 3, inactive: activeStep !== 3 }" @click="setActiveStep(3)">
+            <div class="step-number" :class="{ 'step-number-active': activeStep === 3 }">03//</div>
+            <div class="step-content">
+              <h3>Developing</h3>
+              <p v-if="activeStep === 3">Now, it's time to bring the design to life with cutting-edge development techniques. During the Developing phase, I'll write clean, efficient code to build a robust and responsive product. My focus is on creating seamless user experiences that not only look great but perform flawlessly. Let's turn your vision into a functional and dynamic reality!</p>
+            </div>
+          </div>
+          <div class="step" :class="{ active: activeStep === 4, inactive: activeStep !== 4 }" @click="setActiveStep(4)">
+            <div class="step-number" :class="{ 'step-number-active': activeStep === 4 }">04//</div>
+            <div class="step-content">
+              <h3>Maintaining</h3>
+              <p v-if="activeStep === 4">Ensuring your product stays at its best is crucial, and that's where the Maintaining phase comes in. I'll provide continuous support and updates to keep everything running smoothly and up-to-date. By incorporating user feedback and implementing improvements, we'll make sure your product remains relevant and engaging. Let's keep your digital presence thriving and evolving!</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="v2"></div>
+      <div class="vl"></div>
       <section id="contact" class="card">
         <h2>Contact</h2>
         <p>Provide contact information or a form for visitors to get in touch with you.</p>
@@ -102,6 +123,7 @@ export default {
       tooltipY: 0,
       tooltipImage: '',
       currentProjectId: '',
+      activeStep: 1, // default to the first step
       image1: require('@/assets/noise.png'),
       image2: require('@/assets/working.png'),
       image3: require('@/assets/sparkles.png'),
@@ -126,6 +148,9 @@ export default {
       if (id) {
         this.$router.push({ name: 'ProjectView', params: { id } });
       }
+    },
+    setActiveStep(step) {
+      this.activeStep = step;
     }
   }
 };
@@ -142,7 +167,7 @@ export default {
 }
 
 .intro-container {
-  margin-left: 7% !important;
+  margin-left: 8% !important;
   text-align: left !important;
 }
 
@@ -169,12 +194,12 @@ export default {
   display: inline-block;
   white-space: nowrap;
   animation: slide-left 60s linear infinite;
+  padding-bottom: 75px;
 }
 
 .carousel-content span {
   display: inline-block;
   font-size: 15em;
-  font-family: "Poppins", sans-serif;
 }
 
 @keyframes slide-left {
@@ -222,46 +247,24 @@ export default {
   box-sizing: border-box;
 }
 
-.card {
-  background: url('@/assets/noise.png') no-repeat center center;
-  background-size: cover;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 60px;
-  width: 100%;
-  max-height: 450px;
-  max-width: 1600px;
-  min-width: 300px;
-  box-sizing: border-box;
-  margin-bottom: 40px;
+.headline {
+  font-size: 2.5em;
+  width: 60%;
   text-align: left;
-  font-family: 'Georgia', serif;
-  font-size: 1.2em;
-  line-height: 1.6;
-  color: #fff;
-}
-
-.card h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-.card p {
-  margin: 0;
-  padding: 2vh 0;
-  font-size: 0.9em;
-  color: #f0f0f0cc;
-}
-
-.about-card {
-  display: flex;
-  flex-direction: column;
 }
 
 .about-content {
   display: flex;
-  align-items: flex-start;
-  gap: 80px;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  font-size: 2em;
+}
+
+.about-subcontent {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .about-text {
@@ -272,34 +275,26 @@ export default {
 .about-image {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  max-width: 800px;
+  margin-left: 100px;
+  padding-right: 100px;
+  justify-content: center;
 }
 
 .about-image img {
-  max-width: 65%;
+  max-width: 70%;
   height: auto;
   border-radius: 20px;
-  transform: rotate(10deg);
   transition: box-shadow 0.3s ease;
 }
 
-.about-image img:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-
 @media (max-width: 768px) {
-  .about-content {
+  .about-subcontent {
     flex-direction: column;
   }
 
-  .about-image {
-    justify-content: center;
-    margin: 0;
-  }
-
   .about-image img {
-    margin-top: 20px;
-    transform: none;
+    max-width: 80%;
   }
 
   .about-text {
@@ -350,12 +345,12 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 2em;
+  font-size: 3em;
   cursor: pointer;
 }
 
 .project-category {
-  font-size: 0.5em;
+  font-size: 0.4em;
   text-align: right;
 }
 
@@ -365,39 +360,10 @@ export default {
   margin: 0 auto;
 }
 
-.lang-section {
-  padding: 25px;
-  width: 100%;
-  text-align: center;
-}
-
-.lang-title {
-  font-size: 4em;
-  margin-bottom: 20px;
-}
-
-.lang-subtitle {
-  font-size: 3em;
-  margin-bottom: 20px;
-  padding-bottom: 75px;
-}
-
-.lang-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.lang-list p {
-  font-size: 1.5em;
-  margin: 5px;
-  color: #f0f0f0cc;
-}
-
 .contact-section {
   padding-top: 20px;
-  font-size: 1.2em;
+  text-align: left;
+  font-size: 2em;
 }
 
 .contact-section a {
@@ -447,5 +413,89 @@ export default {
   font-size: 3em;
   position: fixed;
   pointer-events: none;
+}
+
+.lang-section {
+  padding: 25px;
+  width: 100%;
+  text-align: center;
+}
+
+.lang-title {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+.lang-subtitle {
+  font-size: 3em;
+  margin-bottom: 20px;
+  padding-bottom: 75px;
+}
+
+.lang-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.lang-list p {
+  font-size: 1.5em;
+  margin: 5px;
+  color: #f0f0f0cc;
+}
+
+.process-section {
+  width: 80%;
+  text-align: center;
+}
+
+.process-title {
+  font-size: 2.5em;
+  margin-right: 900px;
+  margin-bottom: 20px;
+}
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+  padding-left: 10%;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.step-number {
+  font-size: 3em;
+  margin-right: 20px;
+  color: grey;
+}
+
+.step-number-active {
+  color: white;
+}
+
+.step-content h3 {
+  font-size: 1.5em;
+  color: grey;
+}
+
+.step.active h3 {
+  color: white;
+}
+
+.step-content p {
+  font-size: 1em;
+  color: white;
+}
+
+.inactive {
+  color: grey;
 }
 </style>

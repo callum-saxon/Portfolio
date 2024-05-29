@@ -7,8 +7,8 @@
       <nav class="header-center">
         <ul>
           <li><a href="#about">About</a></li>
-          <li><a href="#life">Life</a></li>
           <li><a href="#work">Work</a></li>
+          <li><a href="#process">Process</a></li>
         </ul>
       </nav>
       <div class="header-right">
