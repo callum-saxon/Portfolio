@@ -48,6 +48,12 @@ export default {
 
 .header-left h1 {
   text-align: left;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.header-left h1:hover {
+  transform: scale(1.1);
+  color: #fff; /* Retain original color */
 }
 
 .header-center {
@@ -62,7 +68,7 @@ export default {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-start; /* Revert to column layout */
 }
 
 .header-center li {
@@ -70,12 +76,34 @@ export default {
 }
 
 .header-center a {
-  color: white;
+  color: white; /* Retain original color */
   text-decoration: none;
+  font-size: 1.2em;
+  position: relative;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.header-center a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white; /* Retain original color */
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.header-center a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
 }
 
 .header-center a:hover {
-  text-decoration: underline;
+  color: white; /* Retain original color */
+  transform: translateY(-3px);
 }
 
 .header-right {
@@ -85,13 +113,33 @@ export default {
 }
 
 .header-right a {
-  color: white;
+  color: white; /* Retain original color */
   text-decoration: none;
   font-size: 1.2em;
-  text-align: left;
+  position: relative;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.header-right a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white; /* Retain original color */
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.header-right a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
 }
 
 .header-right a:hover {
-  text-decoration: underline;
+  color: white; /* Retain original color */
+  transform: translateY(-3px);
 }
 </style>

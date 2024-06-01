@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="main-content">
-    <div class="intro-container">
+    <div class="intro-container fade-in">
       <p class="arrow">🡦</p>
       <p class="intro-text">FULL-STACK DEVELOPER <br>& DIGITAL DESIGNER</p>
     </div>
-    <div class="carousel-wrapper">
+    <div class="carousel-wrapper fade-in">
       <div class="carousel-content" ref="carouselContent">
         <span>Callum Saxon &mdash;&nbsp; </span>
         <span>Callum Saxon &mdash;&nbsp; </span>
@@ -14,22 +14,22 @@
         <span>Callum Saxon &mdash;&nbsp; </span>
       </div>
     </div>
-    <div class="info-section">
+    <div class="info-section fade-in">
       <p>FULL-STACK DEVELOPER<br>BASED IN THE MIDLANDS</p>
       <p>SPECIALISING IN<br>MOBILE APP AND WEB DEVELOPMENT</p>
       <p>[SCROLL . . .]</p>
     </div>
     <div class="card-container">
-      <div class="vl"></div>
+      <div class="vl fade-in"></div>
       <section id="about" class="card about-card">
         <div class="about-content">
           <h1 class="headline">Bringing Your Digital Visions to Life.</h1>
           <div class="about-subcontent">
-            <div class="about-image">
+            <div class="about-image from-left">
               <img src="@/assets/working.png" alt="Working Image">
             </div>
-            <div class="about-text">
-              <p>
+            <div class="about-text from-right">
+              <p class="about-paragraph">
                 I'm a full-stack software developer with a passion for creating intuitive and impactful digital solutions. Through freelancing, I've honed my skills in transforming complex designs into user-friendly experiences. I'm excited to collaborate on projects that challenge and inspire me.
                 <br><br>Let's connect and bring your ideas to life with code! Check out some of my work here!
               </p>
@@ -37,115 +37,116 @@
           </div>
         </div>
       </section>
-      <div class="vl"></div>
-      <h2 class="projects-title">Projects.&sup3; </h2>
-      <div class="vl"></div>
-      <div class="projects-section">
+      <div class="vl fade-in"></div>
+      <h2 class="projects-title fade-in">Projects.&sup3; </h2>
+      <div class="vl fade-in"></div>
+      <div class="projects-section fade-in" @mouseleave="hideTooltip">
         <div class="projects-list" @mousemove="handleMouseMove">
           <p class="projects-subtitle">Featured Projects.</p>
-          <hr class="project-divider">
-          <div class="project-item" @click="navigateToProject('pathway-housing')" @mouseover="showTooltip(image1, 'pathway-housing')" @mouseleave="hideTooltip">
+          <hr class="divider">
+          <div class="project-item fade-in" @click="navigateToProject('pathway-housing')" @mouseover="showTooltip(image1, 'pathway-housing')">
             <p class="project-title">Pathway Housing Solutions - Nottingham's Blue Plaque Exploration</p>
             <p class="project-category">WEB APPLICATION AND DIGITAL DESIGN</p>
             <span class="project-arrow">🡥</span>
           </div>
-          <hr class="project-divider">
-          <div class="project-item" @click="navigateToProject('biocortex')" @mouseover="showTooltip(image2, 'biocortex')" @mouseleave="hideTooltip">
+          <hr class="divider">
+          <div class="project-item fade-in" @click="navigateToProject('biocortex')" @mouseover="showTooltip(image2, 'biocortex')">
             <p class="project-title">BioCortex - Carbon Mirror</p>
             <p class="project-category">WEB APPLICATION AND DIGITAL DESIGN</p>
             <span class="project-arrow">🡥</span>
           </div>
-          <hr class="project-divider">
-          <div class="project-item" @click="navigateToProject('rolls-royce')" @mouseover="showTooltip(image3, 'rolls-royce')" @mouseleave="hideTooltip">
+          <hr class="divider">
+          <div class="project-item fade-in" @click="navigateToProject('rolls-royce')" @mouseover="showTooltip(image3, 'rolls-royce')">
             <p class="project-title">Rolls Royce - NLP and AI</p>
             <p class="project-category">DESKTOP APPLICATION</p>
             <span class="project-arrow">🡥</span>
           </div>
-          <hr class="project-divider">
+          <hr class="divider">
         </div>
       </div>
-      <div class="vl"></div>
-      <h2 class="projects-title">Process.</h2>
-      <div class="vl"></div>
-      <div class="process-section">
+      <div class="vl fade-in"></div>
+      <h2 class="projects-title fade-in">Process.</h2>
+      <div class="vl fade-in"></div>
+      <div class="process-section fade-in">
         <div class="process-steps">
           <p class="process-title">The Process.</p>
-          <div class="step" :class="{ active: activeStep === 1, inactive: activeStep !== 1 }" @click="setActiveStep(1)">
-            <div class="step-number" v-if="activeStep === 1">01//</div>
+          <div class="step" :class="{ active: activeStep === 1 }" @click="setActiveStep(1)">
+            <div class="step-number-container">
+              <div class="step-number" v-if="activeStep === 1">01//</div>
+            </div>
             <div class="step-content">
               <h3>Conceptualisation</h3>
-              <p v-if="activeStep === 1">I'm here to bring your vision to life by diving deep into the essence of your brand! In the Brainstorming phase, I'll explore every angle to understand your unique goals and market landscape. Together, we'll generate innovative ideas that will set the foundation for an extraordinary project. Let's unleash creativity and discover the best path forward!</p>
+              <p v-if="activeStep === 1">
+                I'm here to bring your vision to life by diving deep into the essence of your brand! In the Conceptualisation phase, I'll explore every angle to understand your unique goals and market landscape. Together, we'll generate innovative ideas that will set the foundation for an extraordinary project. Let's unleash creativity and discover the best path forward!
+              </p>
             </div>
           </div>
-          <div class="step" :class="{ active: activeStep === 2, inactive: activeStep !== 2 }" @click="setActiveStep(2)">
-            <div class="step-number" v-if="activeStep === 2">02//</div>
+          <div class="step" :class="{ active: activeStep === 2 }" @click="setActiveStep(2)">
+            <div class="step-number-container">
+              <div class="step-number" v-if="activeStep === 2">02//</div>
+            </div>
             <div class="step-content">
               <h3>Designing</h3>
-              <p v-if="activeStep === 2">In the Designing phase, I'll transform our brainstorming insights into stunning visual concepts. My goal is to create a design that captures your brand's essence and speaks directly to your audience. From wireframes to polished prototypes, I'll ensure every detail aligns with your vision and stands out in the digital landscape. Let's craft a design that leaves a lasting impression!</p>
+              <p v-if="activeStep === 2">
+                In the Designing phase, I'll transform our brainstorming insights into stunning visual concepts. My goal is to create a design that captures your brand's essence and speaks directly to your audience. From wireframes to polished prototypes, I'll ensure every detail aligns with your vision and stands out in the digital landscape. Let's craft a design that leaves a lasting impression!
+              </p>
             </div>
           </div>
-          <div class="step" :class="{ active: activeStep === 3, inactive: activeStep !== 3 }" @click="setActiveStep(3)">
-            <div class="step-number" v-if="activeStep === 3">03//</div>
+          <div class="step" :class="{ active: activeStep === 3 }" @click="setActiveStep(3)">
+            <div class="step-number-container">
+              <div class="step-number" v-if="activeStep === 3">03//</div>
+            </div>
             <div class="step-content">
               <h3>Developing</h3>
-              <p v-if="activeStep === 3">Now, it's time to bring the design to life with cutting-edge development techniques. During the Developing phase, I'll write clean, efficient code to build a robust and responsive product. My focus is on creating seamless user experiences that not only look great but perform flawlessly. Let's turn your vision into a functional and dynamic reality!</p>
+              <p v-if="activeStep === 3">
+                Now, it's time to bring the design to life with cutting-edge development techniques. During the Development phase, I'll write clean, efficient code to build a robust and responsive product. My focus is on creating seamless user experiences that not only look great but perform flawlessly. Let's turn your vision into a functional and dynamic reality!
+              </p>
             </div>
           </div>
-          <div class="step" :class="{ active: activeStep === 4, inactive: activeStep !== 4 }" @click="setActiveStep(4)">
-            <div class="step-number" v-if="activeStep === 4">04//</div>
+          <div class="step" :class="{ active: activeStep === 4 }" @click="setActiveStep(4)">
+            <div class="step-number-container">
+              <div class="step-number" v-if="activeStep === 4">04//</div>
+            </div>
             <div class="step-content">
               <h3>Maintaining</h3>
-              <p v-if="activeStep === 4">Ensuring your product stays at its best is crucial, and that's where the Maintaining phase comes in. I'll provide continuous support and updates to keep everything running smoothly and up-to-date. By incorporating user feedback and implementing improvements, we'll make sure your product remains relevant and engaging. Let's keep your digital presence thriving and evolving!</p>
+              <p v-if="activeStep === 4">
+                Ensuring your product stays at its best is crucial, and that's where the Maintenance phase comes in. I'll provide continuous support and updates to keep everything running smoothly and up-to-date. By incorporating user feedback and implementing improvements, we'll make sure your product remains relevant and engaging. Let's keep your digital presence thriving and evolving!
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <section id="contact" class="card contact-card">
-      <h2>It all starts with good communication/</h2>
-      <div class="contact-button" @click="startForm" :class="{ 'form-active': formStarted }">
-        <div v-if="!formStarted">GET IN CONTACT W/ ME 🡥</div>
-        <form v-if="formStarted" @submit.prevent="nextStep" class="styled-form">
-          <div v-if="currentStep === 1" class="form-group">
-            <div class="step-number-large">01</div>
-            <label for="name">What's your name?</label>
-            <input type="text" id="name" v-model="form.name" placeholder="John Doe *" required>
-            <button type="submit" class="submit-button">Next</button>
-          </div>
-          <div v-if="currentStep === 2" class="form-group">
-            <div class="step-number-large">02</div>
-            <label for="email">What's your email?</label>
-            <input type="email" id="email" v-model="form.email" placeholder="john@doe.com *" required>
-            <button type="submit" class="submit-button">Next</button>
-          </div>
-          <div v-if="currentStep === 3" class="form-group">
-            <div class="step-number-large">03</div>
-            <label for="organization">What's the name of your organisation?</label>
-            <input type="text" id="organization" v-model="form.organization" placeholder="John & Doe">
-            <button type="submit" class="submit-button">Next</button>
-          </div>
-          <div v-if="currentStep === 4" class="form-group">
-            <div class="step-number-large">04</div>
-            <label for="services">What services are you looking for?</label>
-            <textarea id="services" v-model="form.services" placeholder="Web Design, Web Development ..." required></textarea>
-            <button type="submit" class="submit-button">Next</button>
-          </div>
-          <div v-if="currentStep === 5" class="form-group">
-            <div class="step-number-large">05</div>
-            <label for="message">Your enquiry</label>
-            <textarea id="message" v-model="form.message" placeholder="Hello Callum, can you help me with ... *" required></textarea>
-            <button type="submit" class="submit-button">Submit 🡥</button>
-          </div>
-        </form>
+    <section id="contact" class="card contact-card fade-in">
+      <h2>It all starts with good communication./</h2>
+      <a href="mailto:saxoncallum@gmail.com" class="contact-button">
+        <div>GET IN CONTACT W/ ME 🡥</div>
+      </a>
+      <div class="footer">
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/callum-saxon" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://www.instagram.com/callumsaxon" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+          </a>
+          <a href="mailto:saxoncallum@gmail.com">
+            <i class="fas fa-envelope"></i> saxoncallum@gmail.com
+          </a>
+          <p><i class="fas fa-phone"></i> Phone: +44 07742 952173</p>
+          <hr class="divider">
+        </div>
       </div>
+      <p>©2024 Callum Saxon, All Rights Reserved</p>
     </section>
     <div v-if="tooltipVisible" :style="{ top: tooltipY + 'px', left: tooltipX + 'px' }" class="tooltip-box">
-      <img :src="tooltipImage" alt="Project Image" class="tooltip-image">
+      <div class="tooltip-images">
+        <img :src="tooltipImage" alt="Project Image" class="tooltip-image">
+      </div>
       <div class="tooltip-circle">🡥</div>
     </div>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -158,35 +159,49 @@ export default {
       tooltipImage: '',
       currentProjectId: '',
       activeStep: 1,
-      formVisible: false,
-      formStarted: false,
-      currentStep: 1,
-      form: {
-        name: '',
-        email: '',
-        organization: '',
-        services: '',
-        message: ''
-      },
       image1: require('@/assets/noise.png'),
       image2: require('@/assets/working.png'),
-      image3: require('@/assets/sparkles.png'),
+      image3: require('@/assets/rollsroyce-logo.png'),
+      localTime: this.getCurrentTime(),
+      mouseX: 0,
+      mouseY: 0,
+      rafId: null,
     };
   },
   methods: {
     handleMouseMove(event) {
-      const tooltipWidth = 440;
-      const tooltipHeight = 350;
-      this.tooltipX = event.clientX - tooltipWidth / 2;
-      this.tooltipY = event.clientY - tooltipHeight / 2;
+      this.mouseX = event.clientX;
+      this.mouseY = event.clientY;
+      if (!this.rafId) {
+        this.updateTooltipPosition();
+      }
+    },
+    updateTooltipPosition() {
+      this.rafId = requestAnimationFrame(() => {
+        const tooltipWidth = 440;
+        const tooltipHeight = 350;
+        this.tooltipX = this.mouseX - tooltipWidth / 2;
+        this.tooltipY = this.mouseY - tooltipHeight / 2;
+        this.rafId = null;
+        if (this.tooltipVisible) {
+          this.updateTooltipPosition();
+        }
+      });
     },
     showTooltip(image, projectId) {
       this.tooltipImage = image;
       this.currentProjectId = projectId;
-      this.tooltipVisible = true;
+      if (!this.tooltipVisible) {
+        this.tooltipVisible = true;
+        this.updateTooltipPosition();
+      }
     },
     hideTooltip() {
       this.tooltipVisible = false;
+      if (this.rafId) {
+        cancelAnimationFrame(this.rafId);
+        this.rafId = null;
+      }
     },
     navigateToProject(id) {
       if (id) {
@@ -196,56 +211,42 @@ export default {
     setActiveStep(step) {
       this.activeStep = step;
     },
-    sendEmail() {
-      window.location.href = 'mailto:saxoncallum@gmail.com';
+    getCurrentTime() {
+      return new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     },
-    startForm() {
-      this.formStarted = true;
-    },
-    nextStep() {
-      if (this.currentStep < 5) {
-        this.currentStep++;
-      } else {
-        this.submitForm();
-      }
-    },
-    submitForm() {
-      const formData = new FormData();
-      formData.append('entry.2005620554', this.form.name);
-      formData.append('entry.1045781291', this.form.email);
-      formData.append('entry.839337160', this.form.organization);
-      formData.append('entry.1065046570', this.form.services);
-      formData.append('entry.1166974658', this.form.message);
-
-      fetch('https://docs.google.com/forms/d/e/1FAIpQLSc5fS96ZTioqUwrKEdiHMpHl_ofMTto4edHKlN5K6G0eYT8tg/formResponse', {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors'
-      }).then(() => {
-        alert('Form submitted successfully!');
-        this.resetForm();
-      }).catch(() => {
-        alert('There was an error submitting the form.');
-      });
-    },
-    resetForm() {
-      this.form = {
-        name: '',
-        email: '',
-        organization: '',
-        services: '',
-        message: ''
+    observeElements() {
+      const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
       };
-      this.currentStep = 1;
-      this.formStarted = false;
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+      
+      const elements = document.querySelectorAll('.fade-in, .from-left, .from-right, .from-bottom');
+      elements.forEach(el => {
+        observer.observe(el);
+      });
     }
+  },
+  mounted() {
+    setInterval(() => {
+      this.localTime = this.getCurrentTime();
+    }, 1000);
+    this.observeElements();
   }
 };
 </script>
 
-
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Gruppo&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Reddit+Mono:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 .main-content {
   display: flex;
@@ -254,6 +255,7 @@ export default {
   width: 100vw;
   background-color: #121212;
   color: #fff;
+  overflow-x: hidden;
 }
 
 .intro-container {
@@ -263,15 +265,31 @@ export default {
 .arrow {
   font-size: 3.5em;
   margin-bottom: 10px;
+  animation: bounceArrow 2s infinite;
+}
+
+@keyframes bounceArrow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
 .project-arrow {
-  font-size: 2em;
+  font-size: 1.5em;
   margin-bottom: 10px;
+  display: none;
 }
 
 .intro-text {
   font-size: 2.5em;
+  font-weight: 200;
+  font-family: 'Poppins', sans-serif;
 }
 
 .carousel-wrapper {
@@ -279,7 +297,6 @@ export default {
   overflow: hidden;
   white-space: nowrap;
   box-sizing: border-box;
-  padding: 5px 0;
   display: flex;
   justify-content: center;
 }
@@ -288,12 +305,13 @@ export default {
   display: inline-block;
   white-space: nowrap;
   animation: slide-left 60s linear infinite;
-  padding-bottom: 75px;
 }
 
 .carousel-content span {
   display: inline-block;
   font-size: 15em;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
 }
 
 @keyframes slide-left {
@@ -343,6 +361,8 @@ export default {
   font-size: 2.5em;
   width: 60%;
   text-align: left;
+  font-weight: 200;
+  font-family: 'Poppins', sans-serif;
 }
 
 .about-content {
@@ -362,6 +382,12 @@ export default {
 .about-text {
   flex: 1;
   max-width: 50%;
+  font-weight: 200;
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-paragraph {
+  font-size: 1em;
 }
 
 .about-image {
@@ -371,13 +397,19 @@ export default {
   margin-left: 100px;
   padding-right: 100px;
   justify-content: center;
+  transition: transform 0.3s ease;
 }
 
 .about-image img {
   max-width: 70%;
   height: auto;
   border-radius: 20px;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 768px) {
@@ -391,6 +423,11 @@ export default {
 
   .about-text {
     max-width: 100%;
+    text-align: center;
+  }
+
+  .about-paragraph {
+    font-size: 0.5em;
   }
 }
 
@@ -398,6 +435,7 @@ export default {
   border-left: 1px solid white;
   height: 350px;
   padding-bottom: 10px;
+  transition: height 0.3s;
 }
 
 .v2 {
@@ -414,6 +452,8 @@ export default {
 .projects-title {
   font-size: 4em;
   margin-bottom: 20px;
+  font-weight: 200;
+  font-family: 'Poppins', sans-serif;
 }
 
 .projects-subtitle {
@@ -431,6 +471,8 @@ export default {
 
 .project-title {
   flex: 2;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
 }
 
 .project-item {
@@ -439,14 +481,26 @@ export default {
   align-items: center;
   font-size: 3em;
   cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.project-item:hover {
+  transform: scale(1.05);
+}
+
+.project-item:hover .project-title,
+.project-item:hover .project-category {
+  color: grey;
 }
 
 .project-category {
   font-size: 0.4em;
   text-align: right;
+  font-weight: 200;
+  font-family: 'Poppins', sans-serif;
 }
 
-.project-divider {
+.divider {
   border: 1px solid #444;
   width: 100%;
   margin: 0 auto;
@@ -476,7 +530,6 @@ export default {
   background-color: #fff;
   color: #121212;
   padding: 40px;
-  border-radius: 10px;
   text-align: center;
   width: 100%;
   max-width: 100vw;
@@ -489,19 +542,21 @@ export default {
 
 .contact-card h2 {
   font-size: 7em;
-  margin-bottom: 20px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
 }
 
 .contact-card p {
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .contact-button {
   font-size: 2em;
   padding: 50px;
-  background: transparent;
+  background: black;
   border: 2px solid black;
-  color: black;
+  border-radius: 100px;
+  color: white;
   cursor: pointer;
   margin-top: 20px;
   transition: background-color 0.3s, color 0.3s, width 0.5s, height 0.5s, border-radius 0.5s;
@@ -509,100 +564,16 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 300px;
-  height: 75px;
+  width: 40%;
+  height: 10%;
   margin: 0 auto;
 }
 
-.contact-button.form-active {
-  width: 500px;
-  height: 300px;
-  border-radius: 10px;
-  cursor:default;
-}
-
 .contact-button:hover {
-  background-color: black;
-  color: white;
-}
-
-.contact-button.form-active:hover {
-  background-color: transparent;
+  background-color: white;
   color: black;
-}
-
-.form-step-container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.styled-form {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  width: 100%;
-  max-width: 600px;
-  color: #fff;
-  min-height: 400px;
-}
-
-.step-number-large {
-  font-size: 2.5em;
-  font-weight: bold;
-  color: #000;
-  position: absolute;
-  top: -80px;
-  left: 0;
-}
-
-.styled-form .form-group {
-  position: relative;
-  top: 100px;
-}
-
-.styled-form label {
-  font-size: 1em;
-  margin-bottom: 5px;
-  color: #888;
-  font-weight: bold;
-}
-
-.styled-form input,
-.styled-form textarea {
-  width: 100%;
-  padding: 15px;
-  font-size: 1em;
-  border: 1px solid #333;
-  background: #222;
-  color: #fff;
-  border-radius: 5px;
-  outline: none;
-  transition: border-color 0.3s;
-  resize: none;
-}
-
-.styled-form input:focus,
-.styled-form textarea:focus {
-  border-color: #555;
-}
-
-.styled-form .submit-button {
-  font-size: 1.2em;
-  padding: 20px;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  position: relative;
-  top: 30px;
-}
-
-.styled-form .submit-button:hover {
-  background-color: #444;
+  width: 45%;
+  height: 12%;
 }
 
 .tooltip-box {
@@ -618,14 +589,20 @@ export default {
   width: 400px;
   height: 300px;
   pointer-events: none;
-  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, top 0.1s ease, left 0.1s ease;
+}
+
+.tooltip-images {
+  position: relative;
+  width: 350px;
+  height: 225px;
+  overflow: hidden;
 }
 
 .tooltip-image {
   width: 350px;
   height: 225px;
   object-fit: cover;
-  margin-bottom: 10px;
   pointer-events: none;
 }
 
@@ -670,23 +647,28 @@ export default {
   margin-left: 10%;
   cursor: pointer;
   position: relative;
+  transition: all 0.5s ease;
+}
+
+.step-number-container {
+  position: absolute;
+  left: -5em;
+  transition: transform 0.5s;
 }
 
 .step-number {
   font-size: 3em;
-  margin-right: 20px;
-  color: grey;
-  position: absolute;
-  left: -3em;
-}
-
-.step-number-active {
   color: white;
 }
 
 .step-content h3 {
   font-size: 1.5em;
   color: grey;
+  transition: color 0.3s;
+}
+
+.step.active .step-number-container {
+  transform: translateX(0);
 }
 
 .step.active h3 {
@@ -696,46 +678,19 @@ export default {
 .step-content p {
   font-size: 1em;
   color: white;
+  transition: opacity 0.3s;
 }
 
-.inactive {
-  color: grey;
+.step-content p {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.contact-card {
-  background-color: #fff;
-  color: #121212;
-  padding: 40px;
-  border-radius: 10px;
-  text-align: center;
-  width: 100%;
-  max-width: 100vw;
-  margin: 0 auto;
-}
-
-.contact-card h2 {
-  font-size: 7em;
-  margin-bottom: 20px;
-}
-
-.contact-card p {
-  font-size: 1.5em;
-}
-
-.contact-button {
-  font-size: 2em;
-  padding: 50px;
-  background: transparent;
-  border: 2px solid black;
-  color: black;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.contact-button:hover {
-  background-color: black;
-  color: white;
+.step.active .step-content p {
+  opacity: 1;
+  height: auto;
 }
 
 @media (max-width: 768px) {
@@ -778,6 +733,10 @@ export default {
     text-align: center;
   }
 
+  .about-paragraph {
+    font-size: 0.5em;
+  }
+
   .about-image {
     margin-left: 0;
     padding-right: 0;
@@ -800,11 +759,8 @@ export default {
     text-align: left;
   }
 
-  .project-item .arrow {
-    position: absolute;
-    right: 10px;
-    font-size: 1em;
-    color: #fff;
+  .project-item .project-arrow {
+    display: block;
   }
 
   .step {
@@ -821,10 +777,6 @@ export default {
     font-size: 1.2em;
   }
 
-  .contact-card {
-    padding: 20px;
-  }
-
   .contact-card h2 {
     font-size: 3em;
   }
@@ -834,5 +786,66 @@ export default {
     font-size: 1em;
   }
 }
-</style>
 
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  font-size: 1em;
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.socials a, .socials p {
+  color: #121212;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 1.2em;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+.from-left {
+  transform: translateX(-25%);
+  opacity: 0;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.from-left.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.from-right {
+  transform: translateX(25%);
+  opacity: 0;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.from-right.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.from-bottom {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.from-bottom.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+</style>

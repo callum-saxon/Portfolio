@@ -108,6 +108,12 @@
     position: absolute;
     top: 150px;
     left: 100px;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    transform: scale(1.1) rotate(-15deg);
+    color: #555;
   }
   
   .content {
@@ -171,4 +177,5 @@
     margin-bottom: 20px;
   }
   </style>
+  
   
